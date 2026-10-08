@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build XML validator",
+            "type": "process",
+            "command": "cmd.exe",
+            "args": ["/d", "/c", "build.cmd"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run XML validator",
+            "type": "process",
+            "command": "${workspaceFolder}/build/main.exe",
+            "args": ["${input:xmlFile}"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "dependsOn": "Build XML validator",
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "dedicated" }
+        },
+        {
+            "label": "Test XML validator",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "tests/test.ps1"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "dependsOn": "Build XML validator",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "xmlFile",
+            "type": "promptString",
+            "description": "XML file path (relative to the project or absolute; no surrounding quotes)",
+            "default": "note.xml"
+        }
+    ]
+}

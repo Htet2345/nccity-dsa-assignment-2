@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Tags inside comments, such as <ignored>, are not elements. -->
+<catalog>
+    <book id="1" title="C > basics">
+        <title>XML and stacks</title>
+        <description><![CDATA[Literal <text> is not a tag here.]]></description>
+        <available />
+    </book>
+</catalog>

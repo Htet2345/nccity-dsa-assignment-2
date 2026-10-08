@@ -1,0 +1,8 @@
+/build/
+/.demo-review/
+/.tools/
+*.exe
+*.obj
+*.pdb
+*.ilk
+*.idb
